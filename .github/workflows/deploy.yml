@@ -54,8 +54,17 @@ jobs:
           repository: rootwireltd/legal
           path: legal
 
+      - name: Print working directory
+        run: pwd
+      
+      - name: List directory structure
+        run: ls -R
+
       - name: Checkout privacy-policy-site repository
         uses: actions/checkout@v2
+
+      - name: Print working directory after second checkout
+        run: pwd
 
       - name: List directory structure after second checkout
         run: ls -R
