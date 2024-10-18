@@ -66,6 +66,9 @@ jobs:
       - name: List directory structure after second checkout
         run: ls -R
 
+      - name: Make content directory
+        run: mkdir -p ./privacy-policy/content
+
       - name: Copy updated README.md
         run: cp legal/privacy-policy.md ./privacy-policy/content/_index.md
 
