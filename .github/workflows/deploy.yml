@@ -48,7 +48,7 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
-      - name: Checkout privacy-policy repository
+      - name: Checkout legal repository
         uses: actions/checkout@v2
         with:
           repository: rootwireltd/legal
@@ -56,6 +56,9 @@ jobs:
 
       - name: Checkout privacy-policy-site repository
         uses: actions/checkout@v2
+
+      - name: List directory structure after second checkout
+        run: ls -R
 
       - name: Copy updated README.md
         run: cp legal/privacy-policy.md ./content/_index.md
