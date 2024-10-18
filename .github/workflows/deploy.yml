@@ -1,0 +1,39 @@
+name: Update Privacy Policy Site
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-site:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout privacy-policy repository
+        uses: actions/checkout@v2
+        with:
+          repository: rootwireltd/legal
+          path: legal
+
+      - name: Checkout privacy-policy-site repository
+        uses: actions/checkout@v2
+
+      - name: Copy updated README.md
+        run: cp legal/privacy-policy.md ./content/_index.md
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+
+      - name: Build the site
+        run: hugo --minify
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public

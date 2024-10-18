@@ -1,0 +1,5 @@
+baseURL = 'https://privacy.rootwire.co.uk'
+languageCode = 'en-gb'
+title = 'ROOTWIRE LTD. - PRIVACY POLICY'
+
+theme = "hugo-book"
