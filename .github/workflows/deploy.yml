@@ -60,9 +60,6 @@ jobs:
       - name: List directory structure
         run: ls -R
 
-      - name: Checkout privacy-policy-site repository
-        uses: actions/checkout@v2
-
       - name: Print working directory after second checkout
         run: pwd
 
@@ -70,7 +67,7 @@ jobs:
         run: ls -R
 
       - name: Copy updated README.md
-        run: cp legal/privacy-policy.md ./content/_index.md
+        run: cp legal/privacy-policy.md ./privacy-policy/content/_index.md
 
       - name: Build with Hugo
         env:
